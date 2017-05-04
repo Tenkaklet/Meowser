@@ -4,18 +4,18 @@ A free open source cross platform desktop application, used with [Jamendo](https
 
 
 
-#How to install
+# How to install
 --- 
 
 1. In root directory `$ npm install`.
 2. `$ cd app` and `$ npm install`.
 `
-#How to use 
+# How to use 
 ---
 
 In root of your directory `$ gulp run`.
 
-#How to build
+How to build
 ---
 
 1. In root of your directory `$ gulp build` 
