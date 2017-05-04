@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <title>Meowser</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/rating.min.css">
+    <link rel="stylesheet" href="assets/css/semantic.min.css">
+    
+    <!-- build:css assets/css/app.css -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!-- endbuild -->
+</head>
+<body>
+
+    <!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCvutrOb6JkacdkIw1a0AnnZnsxEUAxLFc",
+            authDomain: "meowser-67a3e.firebaseapp.com",
+            databaseURL: "https://meowser-67a3e.firebaseio.com",
+            projectId: "meowser-67a3e",
+            storageBucket: "meowser-67a3e.appspot.com",
+            messagingSenderId: "1019422962582"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <div ng-controller="HomeCtrl">
+        <div class="ui top menu inverted">
+          <div class="ui simple dropdown item">
+               Feed
+              <i class="dropdown"></i>
+              <div class="menu drop">
+                  <a class="item" href="#!/featured/albums">
+                      <i class="user icon"></i> Albums
+                  </a>
+                  <a class="item" ng-href="#!/featured/artists">
+                      <i class="table icon"></i> Artists
+                  </a>
+              </div>
+          </div>
+          <a href="#!/search" class="item">Search</a>
+          <a href="#!/library" class="item" ng-show="loggedInUser">My Library</a>
+          <a href class="item" ng-show="!loggedInUser" ng-click="showLoginModal()">Sign In</a>
+          <a href class="item" ng-show="loggedInUser" ng-click="signOut()">Sign Out</a>
+        </div>
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                    <i class="remove icon" ng-click="close()"></i>
+                <img src="./assets/images/meowser_splash.png" alt="">
+                <form class="ui form" ng-show="signIn" ng-submit="login(user)">
+                    <div class="field">
+                        <input type="email" name="first-name" placeholder="E-mail" ng-model="user.email">
+                    </div>
+                    <div class="field">
+                        <input type="password" name="last-name" placeholder="Password" ng-model="user.password">
+                    </div>
+                    <button class="ui button fluid basic" type="submit" ng-click="login(user)">Log In</button>
+                </form>
+                <div class="field" ng-hide="signUpForm">
+                    <a class="ui button basic teal" ng-click="showSignUpForm()">Create Account</a>
+                </div>
+                <form class="ui form" ng-show="signUpForm" ng-submit="signUp(user)">
+                    <div class="field">
+                        <input type="text" name="first-name" placeholder="Username" ng-model="user.username">
+                    </div>
+                    <div class="field">
+                        <input type="email" name="last-name" placeholder="E-mail" ng-model="user.email">
+                    </div>
+                    <div class="field">
+                        <input type="password" name="last-name" placeholder="Password" ng-model="user.password">
+                    </div>
+                    <button class="ui button fluid basic" type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <ng-view class="ui container stackable main"></ng-view>
+    <div class="sidebar">
+        <ng-include src="'scripts/player/player.html'"></ng-include>
+    </div>
+
+    <script src="https://code.angularjs.org/1.6.4/angular.min.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.1/angular-moment.js"></script>
+    <script src="https://code.angularjs.org/1.6.4/angular-sanitize.js"></script>
+    <script src="https://code.angularjs.org/1.6.4/angular-route.js"></script>
+    <!-- build:app scripts/app.js -->
+    <script src="./scripts/app.js"></script>
+    <script src="./scripts/rating.min.js"></script>
+    <script src="./scripts/soundManager.js"></script>
+    <script src="./scripts/search/Controller.js"></script>
+    <script src="./scripts/result/Controller.js"></script>
+    <script src="./scripts/services.js"></script>
+    <script src="./scripts/home/Controller.js"></script>
+    <script src="./scripts/feed/Controller.js"></script>
+    <script src="./scripts/listing/Controller.js"></script>
+    <script src="./scripts/artist/Controller.js"></script>
+    <script src="./scripts/library/Controller.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

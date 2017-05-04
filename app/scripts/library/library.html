@@ -1,0 +1,49 @@
+<section id="library">
+    <h1>My Library</h1>
+    <h3>Artists</h3>
+    <div class="ui eight cards">
+        <a class="card artist" ng-repeat="artist in artists">
+            <div class="image">
+                <img ng-src="{{artist.image}}">
+            </div>
+            <div class="content">
+                <p class="header">{{artist.artist_name}}</p>
+            </div>
+            <div class="ui compact">
+                <div class="ui icon inverted dropdown button simple">
+                    <i class="plus icon"></i>
+                    <ul class="menu tiny ui select-dropdown">
+                        <li class="item" ng-click="goTo(artist.id)"><i class="search inverted icon"></i></li>
+                        <li class="item" ng-click="remove(artist)"><i class="trash outline icon"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </a>
+    </div>
+    <h3>Albums</h3>
+    <div class="ui four cards">
+        <a class="card" ng-repeat="album in albums">
+            <div class="image">
+                <img ng-src="{{album.image}}">
+            </div>
+            <div class="content">
+                <p class="header">{{album.album_name}}</p>
+                <div class="meta">
+                    <span>{{album.artist_name}}</span>
+                </div>
+            </div>
+            <div class="extra content">
+                <div class="left floated">
+                    <button class="button ui tiny basic red" ng-click="removeAlbum(album)">
+                        Remove
+                    </button>                
+                </div>
+                <div class="right floated">
+                    <button class="button ui tiny basic" ng-click="goToListing(album.id, 'albums')">
+                        View
+                    </button>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>

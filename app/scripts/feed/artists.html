@@ -1,0 +1,25 @@
+
+<article class="feed">
+    <h1>Artists</h1>
+    <div class="ui link cards">
+      <div class="card" ng-repeat="artist in artists" ng-click="discover(artist.joinid, 'artist')">
+        <div class="image">
+          <img ng-src="{{artist.images.size996_350}}">
+        </div>
+        <div class="content">
+          <div class="header">{{artist.subtitle.en}}</div>
+          <div class="meta">
+            <a>{{artist.title.en}}</a>
+          </div>
+          <div class="description">
+            {{artist.text.en}}
+          </div>
+        </div>
+        <div class="extra content">
+          <span class="">
+            <span>{{artist.date_start | amDateFormat:'dddd, MMMM Do YYYY'}}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+</article>

@@ -1,0 +1,77 @@
+<section id="results">
+    <a class="button ui basic icon inverted" ng-click="back()"><i class="chevron left icon"></i> Back</a>
+    <h2>You searched for {{search}}</h2>
+    <article class="ui equal width grid">
+        <div class="column albums">
+            <h1>Albums</h1>
+            <div class="ui no-show card" ng-show="albums.length ===  0">
+                <h5>No album was not found.</h5>
+            </div>
+            <div class="ui items">
+                <div class="item" ng-repeat="album in albums">
+                    <div class="image">
+                        <img ng-src="{{album.image}}">
+                    </div>
+                    <div class="content">
+                        <p class="header">{{album.name}}</p>
+                        <div class="meta">
+                            <span>{{album.artist_name}}</span>
+                        </div>
+                        <div class="description">
+                            <p>Released: <strong>{{album.releasedate}}</strong></p>
+                        </div>
+                        <div class="extra">
+                            <button class="ui right labeled mini basic icon button inverted" ng-click="listen(album.id, 'albums')">
+                                <i class="right play icon"></i>
+                                Listen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column artists">
+            <div class="ui two cards">
+                <h1>Artists</h1>
+                <div class="ui no-show card" ng-show="artists.length ===  0">
+                    <h5>No artist was not found.</h5>
+                </div>
+                <div class="ui card" ng-repeat="artist in artists">
+                    <div class="image">
+                        <img ng-src="{{artist.image || 'http://placehold.it/50' }}">
+                    </div>
+                    <div class="extra">
+                        <p>{{artist.name}}</p>
+                        <div class="ui bottom mini basic attached button" ng-click="discover(artist.id)">
+                            <i class="search icon"></i>
+                            Discover
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column playlists">
+            <h1>Playlists</h1>
+            <div class="ui no-show card" ng-show="playlists.length ===  0">
+                <h5>No playlist was found.</h5>
+            </div>
+            <div class="ui list">
+                <div class="item" ng-repeat="playlist in playlists">
+                    <div class="content">
+                        <h5 class="header">{{playlist.name}}</h5>
+
+                        <div class="description">
+                            <p>Released: <strong>{{playlist.creationdate}}</strong></p>
+                        </div>
+                        <div class="right floated content">
+                            <button class="ui right labeled mini basic icon button inverted" ng-click="listen(playlist.id, 'playlists')">
+                                <i class="right play icon"></i>
+                                Listen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>

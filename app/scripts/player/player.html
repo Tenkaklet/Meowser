@@ -1,0 +1,37 @@
+<div class="ui container" id="player">
+    <sound-manager></sound-manager>
+    <h3>{{ currentPlaying.title }}</h3>
+    <img class="image ui centered" ng-src="{{albumArt}}" alt="">
+    <div class="ui tiny teal progress" seek-track>
+        <div class="bar" ng-style="{width : ( progress + '%' ) }"></div>
+    </div>
+    <p class="meta">
+        <span class="">{{ currentPostion }}</span> <span class="time">{{ currentDuration }}</span>
+    </p>
+    <ul class="songs">
+        <li ng-repeat="song in playlist">
+            <a play-from-playlist="song">{{ song.title }}</a>
+
+            <a remove-from-playlist="song" data-index="{{$index}}">
+                <i class="icon red remove"></i>
+            </a>
+            <span ng-if="currentPlaying.id == song.id"></span>
+        </li>
+    </ul>
+    <button class="ui inverted icon button tiny basic" prev-track><i class="backward icon"></i></button>
+    <button class="ui green inverted icon button tiny basic" play-music><i class="play icon"></i></button>
+    <button class="ui icon inverted button tiny basic" pause-music><i class="pause icon"></i></button>
+    <button class="ui icon button inverted tiny basic" next-track><i class="icon forward"></i></button>
+    <button class="ui icon button tiny inverted basic" stop-music><i class="icon stop"></i></button>
+    <button class="ui icon button inverted basic tiny basic" repeat-music><i class="icon repeat"></i></button>
+
+    <!-- <br/>Volume: {{ volume }} -
+    <button music-volume data-type="increase">+</button>
+    -
+    <button music-volume data-type="decrease">-</button> -->
+    <br>
+    <button class="ui inverted icon button tiny basic" mute-music><i class="icon mute"></i></button>
+    <button class="ui icon inverted red button tiny basic" clear-playlist><i class="icon red ban"></i></button>
+    <br/>
+    <br/>
+</div>

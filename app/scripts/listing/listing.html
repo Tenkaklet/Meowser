@@ -1,0 +1,43 @@
+<a class="button ui basic icon inverted" ng-click="back()"><i class="chevron left icon"></i> Back</a>
+
+<section id="listing">
+    <div class="titles">
+        <h1>{{data.name}}</h1>
+        <h5>{{data.artist_name}}</h5>
+    </div>
+    <div class="ui two column grid">
+        <div class="left column">
+            <ul class="songs">
+                <li class="song" ng-repeat="song in songs">
+                    <a class="item" music-player="play" add-song="song">{{ song.title }}</a>
+                    <a class="ui basic icon tiny" music-player add-song="song"><i class="plus icon"></i></a>
+                </li>
+            </ul>
+            <button class="button ui mini inverted basic" play-all="songs">Play all</button>
+            <button class="button ui mini inverted basic" play-all="songs" data-play="false">Add all</button>
+            <button class="button ui mini inverted basic" ng-click="addToLibrary(data)" ng-show="loggedInUser" ng-disabled="added">{{message}}</button>
+            <sound-manager></sound-manager>
+        </div>
+
+        <div class="column">
+            <img class="ui medium image album_art" ng-src="{{data.image}}">
+            <p class="ui tag label teal tiny" ng-repeat="tags in musicInfo.musicinfo.tags">{{tags}}</p>
+            <h3>Reviews:</h3>
+            <div class="ui no-show card" ng-show="!reviews">
+                <h5>No reviews were found</h5>
+            </div>
+            <div class="" ng-hide="!reviews">
+                <ul class="reviews">
+                    <li class="review">
+                        <h4 class="user"> By: {{reviews.user_name}}</h4> <small>{{reviews.dateadded}}</small>
+                        <div class="content">
+                            <p class="title">{{reviews.title}}</p><ng-rate-it ng-model="reviews.score" class="rating" read-only="true"></ng-rate-it>
+                            <p class="body">{{reviews.text}}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</section>

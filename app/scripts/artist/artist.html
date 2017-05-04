@@ -1,0 +1,41 @@
+<a class="button ui basic icon inverted" ng-click="back()"><i class="chevron left icon"></i> Back</a>
+<section class="ui grid" id="artist">
+    <article class="ui ten wide column">
+        <div class="ui two column grid">
+            <h1>{{info.name}}</h1>
+            <div class="row">
+                <div class="column">
+                    <img class="image" ng-src="{{info.image}}" alt="">
+                    <br>
+                    <div class="ui teal tiny label" ng-repeat="tag in info.musicinfo.tags">
+                        {{tag}}
+                    </div>
+                    <div class="meta">
+                        <p>{{location.locations[0].city}} {{location.locations[0].country}}</p>
+                        <a href ng-click="open(location.website)">{{location.website}}</a>
+                        <button class="button ui basic mini inverted" ng-click="addToLibrary(info, 'artist')" ng-show="user" ng-disabled="added">{{message}}</button>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="bio" ng-bind-html="artistBio"></div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <article class="ui six wide column albums">
+        <h3>Albums</h3>
+        <div class="ui link items">
+            <div class="item" ng-repeat="album in albums" ng-click="listen(album.id, 'albums')">
+                <div class="ui tiny image">
+                    <img ng-src="{{album.image}}">
+                </div>
+                <div class="content">
+                    <div class="header">{{album.name}}</div>
+                    <div class="description">
+                        <p>{{album.releasedate | amDateFormat:'MMMM YYYY'}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>

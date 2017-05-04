@@ -1,0 +1,10 @@
+{
+  "name": "Meowser",
+  "version": "0.0.0",
+  "description": "A free open source Music Electron App",
+  "main": "main.js",
+  "dependencies": {
+    "mysql": "2.9.0",
+    "electron": "*"
+  }
+}
