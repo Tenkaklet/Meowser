@@ -11,6 +11,7 @@
     "gulp-uglify": "^1.3.0",
     "gulp-usemin": "^0.3.12",
     "main-bower-files": "^2.13.1",
+    "electron-prebuilt": "*",
     "q": "^1.4.1",
     "rcedit": "^0.3.0"
   },
